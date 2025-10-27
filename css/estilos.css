@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.web {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+
+  > header {
+    padding: .5rem 1rem;
+    text-align: center;
+    background-color: #f0ebe3;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  > main {
+    padding: 2rem 1rem;
+    background: #f6f5f2;
+
+    .titulo {
+      margin-bottom: 1em;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  > footer {
+    padding: 1rem;
+    background-color: #f0ebe3;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      list-style: none;
+    }
+  }
+}
+
+button {
+  padding: .5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  font-weight: bold;
+  background-color: #45474b;
+  color: #ffffff;
+  transition: filter 300ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+  }
+}
+
+#mini-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #aeaeae;
+  margin-bottom: 1rem;
+}
+
+#productos {
+  display: grid;
+  grid-template-columns: 100%;
+  list-style: none;
+  gap: 1rem;
+
+  li {
+    border: 1px solid #aeaeae;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: #ffffff;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.modal {
+  border: 1px solid #aeaeae;
+  padding: 1rem;
+  width: 80%;
+  max-width: 40rem;
+  max-height: 95dvh;
+  animation: fade-slide-up 0.3s ease-out forwards;
+  margin: auto;
+
+  .detalle {
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+
+    img, h1, p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .carrito {
+    text-align: center;
+
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    >ul {
+      padding-left: 1rem;
+      text-align: left;
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+
+@media (width >= 576px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 768px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
