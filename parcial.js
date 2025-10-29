@@ -63,18 +63,24 @@ function renderizarProductos() {
     img.alt = producto.nombre;
 
     const div = document.createElement("div");
+    div.classList.add("producto-info");
 
-    const h2 = document.createElement("h2");
+    const h2 = document.createElement("h3");
     h2.textContent = producto.nombre;
+    h2.classList.add("producto-nombre");
+
 
     const descripcion = document.createElement("p");
     descripcion.textContent = producto.descripcion;
+    descripcion.classList.add("producto-descripcion");
 
     const precio = document.createElement("p");
     precio.textContent = `$${producto.precio}`;
+    precio.classList.add("producto-precio");
 
     const categoria = document.createElement("p");
     categoria.textContent = producto.categoria;
+    categoria.classList.add("producto-categoria");
 
     const footer = document.createElement("footer");
 

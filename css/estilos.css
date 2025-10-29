@@ -60,13 +60,18 @@ button {
   border-radius: 3px;
   border: none;
   font-weight: bold;
-  background-color: #45474b;
+  background-color: #6a4b3c;
   color: #ffffff;
   transition: filter 300ms ease-out;
 
   &:hover {
     cursor: pointer;
     filter: brightness(1.2);
+    background-color: #745b4d;
+  }
+
+  &:active {
+    border: none;
   }
 }
 
@@ -76,6 +81,11 @@ button {
   justify-content: space-around;
   border-bottom: 1px solid #aeaeae;
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.mini-carrito-resumen {
+  color: #6a4b3c;
 }
 
 #productos {
@@ -86,6 +96,7 @@ button {
 
   li {
     border: 1px solid #aeaeae;
+    border-radius: 3px;
 
     img {
       width: 100%;
@@ -200,6 +211,53 @@ button {
   max-width: 400px;
 }
 
+#productos li {
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+#productos li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.producto-info {
+  padding: 1rem 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.producto-nombre {
+  font-size: 1.3rem;
+  color: #6a4b3c;
+  font-weight: 600;
+}
+
+.producto-descripcion {
+  font-size: 0.9rem;
+  color: #8c857e;
+  font-style: italic;
+}
+
+.producto-precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #5a3e2b;
+  margin-top: 0.5rem;
+}
+
+.producto-categoria {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  color: #b6a99b;
+}
+
 @media (width >=576px) {
   .web {
     >footer ul {
@@ -223,5 +281,38 @@ button {
 
   #productos {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  #hero {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    height: auto;             
+    padding: 2rem 1rem;
+    position: relative;         
+  }
+
+  #hero .hero-text {
+    text-align: center;
+  }
+
+    #hero .hero-text h1 {
+      font-size: 2rem;
+    }
+
+     #hero .hero-text p {
+      font-size: 1.2rem;
+    }
+
+  #hero .hero-image {
+    position: static !important;
+    max-width: min(680px, 90vw);
+    margin-top: 1.25rem;
+  }
+
+  #hero .hero-image img {
+    width: 100%;
   }
 }
