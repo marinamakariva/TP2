@@ -1,9 +1,6 @@
-'use strict'; 
+'use strict';
 
-
-// Productos. 
-// Marina, aquí saqué imágenes de la Web de Bulgari. Podemos cambiarla sin problema
-//Puse cico categorías.
+// Productos
 const productos = [
   { id: 1, nombre: "Anillo de Plata", descripcion: "Anillo de plata 925", precio: 800000, imagen: "img/producto-AnillodePlata.png", categoria: "anillos" },
   { id: 2, nombre: "Collar Rueda", descripcion: "Collar clásico", precio: 900000, imagen: "img/producto-CollarClasico.png", categoria: "collares" },
@@ -14,8 +11,7 @@ const productos = [
 ];
 
 
-// carrito de compras
-
+// Carrito de compras
 class CarritoDeCompras {
   constructor() {
     this.items = []; // [{ productoId, cantidad }]
@@ -28,6 +24,10 @@ class CarritoDeCompras {
     } else {
       this.items.push({ productoId, cantidad: 1 });
     }
+  }
+
+  eliminarProducto(productoId) {
+    this.items = this.items.filter(i => i.productoId !== productoId);
   }
 
   calcularTotal() {
@@ -124,17 +124,21 @@ function abrirModalDetalle(producto) {
   img.src = producto.imagen;
   img.alt = producto.nombre;
 
-  const titulo = document.createElement("h1");
+  const titulo = document.createElement("h3");
   titulo.textContent = producto.nombre;
+  titulo.classList.add("producto-nombre");
 
   const descripcion = document.createElement("p");
   descripcion.textContent = producto.descripcion;
+  descripcion.classList.add("producto-descripcion");
 
   const precio = document.createElement("p");
   precio.textContent = `$${producto.precio}`;
+  precio.classList.add("producto-precio");
 
   const categoria = document.createElement("p");
   categoria.textContent = producto.categoria;
+  categoria.classList.add("producto-categoria");
 
   const footer = document.createElement("footer");
 
@@ -203,6 +207,17 @@ function abrirModalCarrito() {
     const producto = productos.find(p => p.id === item.productoId);
     const li = document.createElement("li");
     li.textContent = `${producto.nombre} - Cantidad: ${item.cantidad} x $${producto.precio}`;
+
+    const btnEliminar = document.createElement("button");
+    btnEliminar.textContent = "Eliminar";
+    btnEliminar.addEventListener("click", () => {
+      carrito.eliminarProducto(item.productoId);
+      actualizarMiniCarrito();
+      modal.close();
+      abrirModalCarrito();
+    });
+
+    li.appendChild(btnEliminar);
     lista.appendChild(li);
   });
 
