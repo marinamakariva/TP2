@@ -195,7 +195,7 @@ function abrirModalCarrito() {
 
   const header = document.createElement("header");
   const spanProductos = document.createElement("span");
-  spanProductos.textContent = `Productos: ${carrito.cantidadTotal()}`;
+  spanProductos.textContent = `Productos: ${carrito.cantidadTotal()} , `;
   const spanTotal = document.createElement("span");
   spanTotal.textContent = `Total: $${carrito.calcularTotal()}`;
   header.appendChild(spanProductos);
